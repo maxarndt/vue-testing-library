@@ -34,11 +34,11 @@ type VueTestingLibraryRenderOptions = {
   /**
    * @deprecated Use `global.plugins` array instead.
    */
-  store: Record<string, any>
+  store: any
   /**
    * @deprecated Use `global.plugins` array instead.
    */
-  routes?: Record<string, any>
+  routes?: any
   container?: Element
   baseElement?: Element
 }
