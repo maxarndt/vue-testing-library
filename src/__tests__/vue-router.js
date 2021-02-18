@@ -13,12 +13,27 @@ const routes = [
 
 test('full app rendering/navigating', async () => {
   // Notice how we pass a `routes` object to our render function.
-  const {getByTestId} = render(App, {routes})
+  const {getByTestId, getByText} = render(App, {routes})
 
+  expect(getByText(/you are home/i)).toBeInTheDocument()
   expect(getByTestId('location-display')).toHaveTextContent('/')
 
   await fireEvent.click(getByTestId('about-link'))
 
+  expect(getByText(/you are on the about page/i)).toBeInTheDocument()
+  expect(getByTestId('location-display')).toHaveTextContent('/about')
+})
+
+test('another app rendering/navigating', async () => {
+  // Notice how we pass a `routes` object to our render function.
+  const {getByTestId, getByText} = render(App, {routes})
+
+  expect(getByText(/you are home/i)).toBeInTheDocument()
+  expect(getByTestId('location-display')).toHaveTextContent('/')
+
+  await fireEvent.click(getByTestId('about-link'))
+
+  expect(getByText(/you are on the about page/i)).toBeInTheDocument()
   expect(getByTestId('location-display')).toHaveTextContent('/about')
 })
 
